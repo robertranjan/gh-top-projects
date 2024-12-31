@@ -1,0 +1,15 @@
+version: 3
+
+tasks:
+  default: task -a
+  run:
+    cmds:
+      - |
+        uv run python main.py \
+          --language rust \
+          --min-stars 10000 \
+          --max-stars 20000
+  list:
+    cmds:
+      - |
+        mlr --from github_repos.csv --c2p --barred cat
