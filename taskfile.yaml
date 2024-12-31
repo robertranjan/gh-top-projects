@@ -6,10 +6,17 @@ tasks:
     cmds:
       - |
         uv run python main.py \
-          --language rust \
-          --min-stars 10000 \
-          --max-stars 20000
+          --language go \
+          --min-stars 25000 \
+          --max-stars 40000 \
+          --output go_repos_25_40k_stars.csv
+
   list:
     cmds:
       - |
         mlr --from github_repos.csv --c2p --barred cat
+
+  view:
+    cmds:
+      - |
+        tw go_repos_25_40k_stars.csv
