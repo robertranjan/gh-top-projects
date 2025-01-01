@@ -8,6 +8,7 @@ import requests
 
 # Default GitHub API headers with optional token
 def get_headers():
+    """Get headers."""
     token = os.getenv("GITHUB_TOKEN")
     headers = {}
     if token:
@@ -98,7 +99,7 @@ def fetch_repositories(language, min_stars, max_stars, min_forks):
 
 
 def fetch_additional_details(repo):
-    """Fetch additional details (contributors count, recent commits) for a repository."""
+    """Fetch additional details (contributors count, recent commits) of repository."""
     headers = get_headers()
     details = {
         "contributors_count": 0,
@@ -152,7 +153,7 @@ def save_to_csv(repos, output_file):
 
 
 def main():
-    """Main driver function."""
+    """Drive application."""
     parser = argparse.ArgumentParser(description="Fetch and save GitHub repositories.")
     parser.add_argument(
         "--language", required=True, help="Programming language to filter by."

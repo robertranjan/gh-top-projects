@@ -2,21 +2,36 @@ version: 3
 
 tasks:
   default: task -a
-  run:
+
+  top-go:
     cmds:
       - |
         uv run python main.py \
           --language go \
           --min-stars 25000 \
           --max-stars 40000 \
-          --output go_repos_25_40k_stars.csv
+          --output top-go-projects.csv
+
+  top-python:
+    cmds:
+      - |
+        uv run python main.py \
+          --language python \
+          --min-stars 25000 \
+          --max-stars 40000 \
+          --output top-python-projects.csv
 
   list:
     cmds:
       - |
         mlr --from github_repos.csv --c2p --barred cat
 
-  view:
+  go-view:
     cmds:
       - |
-        tw go_repos_25_40k_stars.csv
+        tw top-go-projects.csv
+
+  python-view:
+    cmds:
+      - |
+        tw top-go-projects.csv
