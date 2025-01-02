@@ -6,25 +6,32 @@ tasks:
   top-go:
     cmds:
       - |
+        out="top-go-projects.csv"
+        if [[ -f ${out} ]] ; then
+          echo "file ${out} already exist. Delete file to regenerate."
+          exit
+        fi
+
         uv run python main.py \
           --language go \
           --min-stars 25000 \
           --max-stars 40000 \
-          --output top-go-projects.csv
+          --output ${out}
 
   top-python:
     cmds:
       - |
+        out="top-python-projects.csv"
+        if [[ -f ${out} ]] ; then
+          echo "file ${out} already exist. Delete file to regenerate."
+          exit
+        fi
+
         uv run python main.py \
           --language python \
           --min-stars 25000 \
           --max-stars 40000 \
-          --output top-python-projects.csv
-
-  list:
-    cmds:
-      - |
-        mlr --from github_repos.csv --c2p --barred cat
+          --output ${out}
 
   go-view:
     cmds:
